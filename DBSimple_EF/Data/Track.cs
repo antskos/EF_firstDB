@@ -12,5 +12,7 @@ namespace DBSimple_EF.Data
         public string Name { get; set; }
 
         public int Duration { get; set; }
+
+        public virtual Artist Artist { get; set; }
     }
 }
