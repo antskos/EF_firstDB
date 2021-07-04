@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -14,27 +11,5 @@ namespace DBSimple_EF.Data
         public DbSet<Track> Tracks { get; set; }
 
         public DbSet<Artist> Artists { get; set; }
-    }
-
-    [Table("Tracks")]
-    public class Track
-    {
-        public int Id { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        public int Duration { get; set; }
-    }
-
-    [Table("Artists")]
-    public class Artist
-    {
-        public int Id { get; set; }
-
-        [Required]
-        public string Name { get; set; }
-
-        public DateTime Birthday { get; set; }
     }
 }
