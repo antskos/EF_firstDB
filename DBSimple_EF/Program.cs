@@ -11,6 +11,35 @@ namespace DBSimple_EF
     {
         static void Main(string[] args)
         {
+
+            using (var db = new SongsDB())
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    var artist = new Artist
+                    {
+                        Name = $"Artist name {i}",
+                        Birthday = DateTime.Now.Subtract(TimeSpan.FromDays(36 * i))
+
+                    };
+                    artist.Tracks = new List<Track>();
+
+                    for (int j = 0; j < 5; j++)
+                    {
+                        var track = new Track
+                        {
+                            Name = $"Track {i + 2 * j}",
+                            Duration = j * 32
+                        };
+
+                        artist.Tracks.Add(track);
+                    }
+                    db.Artists.Add(artist);
+                }
+
+                db.SaveChanges();
+            }
+
             using (var db = new SongsDB())
             {
                 var tracks_count = db.Tracks.Count();
