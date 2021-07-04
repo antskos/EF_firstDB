@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBSimple_EF.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,13 @@ namespace DBSimple_EF
     {
         static void Main(string[] args)
         {
+            using (var db = new SongsDB())
+            {
+                var tracks_count = db.Tracks.Count();
+                Console.WriteLine($"В БД {tracks_count} песен");
+            }
+
+            Console.ReadLine();
         }
     }
 }
