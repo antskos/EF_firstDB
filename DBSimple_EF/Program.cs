@@ -42,6 +42,8 @@ namespace DBSimple_EF
 
             using (var db = new SongsDB())
             {
+                db.Database.Log = msg => Console.WriteLine("EF : {0}\r\n---------------", msg);
+
                 var tracks_count = db.Tracks.Count();
                 Console.WriteLine($"В БД {tracks_count} песен");
             }
